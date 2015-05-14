@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>TESTS</title>
+
+</head>
+
+<body>
+  <script src="./functional/queue.js"></script>
+  <script src="./functional/stack.js"></script>
+  <script src="./functional-shared/queue.js"></script>
+  <script src="./functional-shared/stack.js"></script>
+  <script src="./prototypal/queue.js"></script>
+  <script src="./prototypal/stack.js"></script>
+  <script src="./pseudoclassical/queue.js"></script>
+  <script src="./pseudoclassical/stack.js"></script>
+  <script>
+  var count = 1000;
+  var myStackfunctional = [];
+  var myQueuefunctional = [];
+  var myStackFunctionalShared = [];
+  var myQueueFunctionalShared = [];
+  var myStackProto = [];
+  var myQueueProto = [];
+  var myStackPseudo = [];
+  var myQueuePseudo = [];
+  var functional = function() {
+    var start = performance.now();
+    for(var i = 0; i < count; i++){
+      myStackfunctional[i] = Stackfunctional();
+      myQueuefunctional[i] = Queuefunctional();
+    }
+    console.log("Function: " + (performance.now() - start));
+  }
+  var functionalShared = function() {
+    var start = performance.now();
+    for(var i = 0; i < count; i++){
+      myStackFunctionalShared[i] = Stackfunctionalshared();
+      myQueueFunctionalShared[i] = Queuefunctionalshared();
+    }
+    console.log("Functional-Shared: " + (performance.now() - start));
+  }
+  var proto = function() {
+    var start = performance.now();
+    for(var i = 0; i < count; i++){
+      myStackProto[i] = Stackprototypal();
+      myQueueProto[i] = Queueprototypal();
+    }
+    console.log("Prototypal: " + (performance.now() - start));
+  }
+
+  var pseudo = function() {
+    var start = performance.now();
+    for(var i = 0; i < count; i++){
+      myStackPseudo[i] = new Stackpseudo();
+      myQueuePseudo[i] = new Queuepseudo();
+    }
+    console.log("Pseudo: " + (performance.now() - start));
+  }
+  functional();
+  functionalShared();
+  proto();
+  pseudo();
+
+
+
+
+  </script>
+</body>
+</html>
